@@ -12,6 +12,7 @@ function App() {
     <Router>
       <Navbar />
       <div className="container mt-4">
+        <h1>MUTUAL FUNDS</h1>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/investor" element={<Investor />} />
