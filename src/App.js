@@ -2,10 +2,11 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import FundsPage from "./components/FundsPage";
-import AdminDashboard from "./dashboards/AdminDashboard";
-import InvestorDashboard from "./dashboards/InvestorDashboard";
-import DataAnalystDashboard from "./dashboards/DataAnalystDashboard";
-import FinancialAdvisorDashboard from "./dashboards/FinancialAdvisorDashboard";
+import AdminDashboard from "./Dashboards/AdminDashboard";
+import InvestorDashboard from "./Dashboards/InvestorDashboard";
+import DataAnalystDashboard from "./Dashboards/DataAnalystDashboard";
+import FinancialAdvisorDashboard from "./Dashboards/FinancialAdvisorDashboard";
+
 
 function App() {
   return (
