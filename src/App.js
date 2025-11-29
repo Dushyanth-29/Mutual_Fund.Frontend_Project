@@ -1,3 +1,4 @@
+// src/App.js
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import FundsPage from "./components/FundsPage";
@@ -7,18 +8,29 @@ import InvestorDashboard from "./Dashboards/InvestorDashboard";
 import DataAnalystDashboard from "./Dashboards/DataAnalystDashboard";
 import FinancialAdvisorDashboard from "./Dashboards/FinancialAdvisorDashboard";
 
+// Import the AI Chatbox
+import AIChatBox from "./components/AIChatBox";
+
 function App() {
   return (
     <FundProvider>
       <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/funds" element={<FundsPage />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/investor" element={<InvestorDashboard />} />
-          <Route path="/analyst" element={<DataAnalystDashboard />} />
-          <Route path="/advisor" element={<FinancialAdvisorDashboard />} />
-        </Routes>
+        <>
+          {/* Navigation Bar */}
+          <Navbar />
+
+          {/* All Routes */}
+          <Routes>
+            <Route path="/funds" element={<FundsPage />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/investor" element={<InvestorDashboard />} />
+            <Route path="/analyst" element={<DataAnalystDashboard />} />
+            <Route path="/advisor" element={<FinancialAdvisorDashboard />} />
+          </Routes>
+
+          {/* AI Chatbox — Floating assistant */}
+          <AIChatBox />
+        </>
       </Router>
     </FundProvider>
   );
