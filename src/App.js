@@ -1,36 +1,35 @@
 // src/App.js
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 import FundsPage from "./components/FundsPage";
+
 import { FundProvider } from "./context/FundContext";
+
 import AdminDashboard from "./Dashboards/AdminDashboard";
 import InvestorDashboard from "./Dashboards/InvestorDashboard";
 import DataAnalystDashboard from "./Dashboards/DataAnalystDashboard";
 import FinancialAdvisorDashboard from "./Dashboards/FinancialAdvisorDashboard";
 
-// Import the AI Chatbox
 import AIChatBox from "./components/AIChatBox";
 
 function App() {
   return (
     <FundProvider>
       <Router>
-        <>
-          {/* Navigation Bar */}
-          <Navbar />
+        <Navbar />
 
-          {/* All Routes */}
-          <Routes>
-            <Route path="/funds" element={<FundsPage />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/investor" element={<InvestorDashboard />} />
-            <Route path="/analyst" element={<DataAnalystDashboard />} />
-            <Route path="/advisor" element={<FinancialAdvisorDashboard />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/funds" element={<FundsPage />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/investor" element={<InvestorDashboard />} />
+          <Route path="/analyst" element={<DataAnalystDashboard />} />
+          <Route path="/advisor" element={<FinancialAdvisorDashboard />} />
+        </Routes>
 
-          {/* AI Chatbox — Floating assistant */}
-          <AIChatBox />
-        </>
+        <AIChatBox />
       </Router>
     </FundProvider>
   );
