@@ -1,126 +1,116 @@
-/* MAIN CONTAINER */
+/* src/pages/Funds.css */
+
 .funds-container {
-  padding: 40px;
-  font-family: "Inter", sans-serif;
-  background: #f7f9fc;
+  padding: 40px 80px;
+  background: #f4f7fb;
   min-height: 100vh;
 }
 
-.funds-title {
+.funds-header h1 {
   font-size: 32px;
   font-weight: 700;
-  color: #1e293b;
+  margin-bottom: 5px;
 }
 
-.funds-subtitle {
-  font-size: 16px;
-  color: #64748b;
-  margin-bottom: 25px;
+.funds-header p {
+  color: #6b7280;
+  margin-bottom: 40px;
+  font-size: 15px;
 }
 
-/* CARD GRID */
-.fund-list {
+/* GRID LAYOUT FOR LAPTOP */
+.funds-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
 }
 
 /* FUND CARD */
 .fund-card {
   background: #ffffff;
-  padding: 24px;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
   transition: 0.3s ease;
-  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .fund-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
 }
 
-/* HEADER */
-.fund-header {
+/* TOP SECTION */
+.fund-top {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 18px;
 }
 
-.fund-icon {
-  background: #4f46e5;
-  color: white;
-  font-size: 20px;
-  height: 48px;
-  width: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
+.fund-top h2 {
+  font-size: 18px;
   font-weight: 600;
 }
 
-/* FUND NAME + CATEGORY */
-.fund-name {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1e293b;
-  margin: 0;
+/* BADGES */
+.risk-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
-.fund-category {
-  font-size: 14px;
-  color: #64748b;
+.risk-badge.low {
+  background: #e6f7ee;
+  color: #0f9d58;
 }
 
-/* DETAILS SECTION */
+.risk-badge.moderate {
+  background: #fff4e5;
+  color: #f57c00;
+}
+
+.risk-badge.high {
+  background: #fdecea;
+  color: #d32f2f;
+}
+
+/* DETAILS */
 .fund-details {
   display: flex;
   justify-content: space-between;
-  margin: 20px 0;
+  margin: 25px 0;
 }
 
 .label {
   font-size: 12px;
-  color: #94a3b8;
+  color: #6b7280;
 }
 
-.value {
+.fund-details h3 {
   font-size: 16px;
-  font-weight: 600;
-  color: #1e293b;
+  margin-top: 5px;
 }
 
-.risk {
-  color: #e11d48;
-}
-
-.return {
+.returns {
   color: #16a34a;
+  font-weight: 600;
 }
 
 /* BUTTON */
 .invest-btn {
-  width: 100%;
   padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
+  background: linear-gradient(90deg, #2563eb, #1e40af);
   color: white;
-  background: #2563eb;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .invest-btn:hover {
-  background: #1d4ed8;
-}
-
-/* EMPTY STATE */
-.no-funds {
-  font-size: 18px;
-  color: #475569;
-  margin-top: 20px;
+  background: linear-gradient(90deg, #1e40af, #1e3a8a);
 }

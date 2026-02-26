@@ -1,37 +1,73 @@
-import React, { useContext } from "react";
-import { FundContext } from "../context/FundContext";
+// src/pages/Funds.jsx
+import React from "react";
+import "./Funds.css";
 
-const FundsDashboard = () => {
-  const { funds, loading } = useContext(FundContext);
+const fundsData = [
+  {
+    id: 1,
+    name: "Axis Bluechip Fund",
+    type: "Equity",
+    risk: "Moderate",
+    nav: "₹52.5",
+    returns: "14.2%",
+  },
+  {
+    id: 2,
+    name: "HDFC Short Term Fund",
+    type: "Debt",
+    risk: "Low",
+    nav: "₹31.8",
+    returns: "8.4%",
+  },
+  {
+    id: 3,
+    name: "Mirae Emerging Fund",
+    type: "Equity",
+    risk: "High",
+    nav: "₹68.3",
+    returns: "18.9%",
+  },
+];
 
-  if (loading) {
-    return <h2 style={{ textAlign: "center" }}>Loading mutual funds...</h2>;
-  }
-
+function Funds() {
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>📈 Mutual Funds List</h2>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "15px" }}>
-        {funds.map((fund, index) => (
-          <div
-            key={index}
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: "10px",
-              padding: "15px",
-              background: "#f9f9f9",
-              boxShadow: "0 2px 5px rgba(0,0,0,0.1)"
-            }}
-          >
-            <h3>{fund.name}</h3>
-            <p>Type: {fund.type}</p>
-            <p>Returns: {fund.returns}%</p>
-            <p>Risk: {fund.risk}</p>
+    <div className="funds-container">
+      <div className="funds-header">
+        <h1>Explore Mutual Funds</h1>
+        <p>Handpicked insights for smarter investments</p>
+      </div>
+
+      <div className="funds-grid">
+        {fundsData.map((fund) => (
+          <div className="fund-card" key={fund.id}>
+            <div className="fund-top">
+              <h2>{fund.name}</h2>
+              <span className={`risk-badge ${fund.risk.toLowerCase()}`}>
+                {fund.risk}
+              </span>
+            </div>
+
+            <div className="fund-details">
+              <div>
+                <p className="label">NAV</p>
+                <h3>{fund.nav}</h3>
+              </div>
+              <div>
+                <p className="label">Type</p>
+                <h3>{fund.type}</h3>
+              </div>
+              <div>
+                <p className="label">3Y Returns</p>
+                <h3 className="returns">{fund.returns}</h3>
+              </div>
+            </div>
+
+            <button className="invest-btn">Invest Now</button>
           </div>
         ))}
       </div>
     </div>
   );
-};
+}
 
-export default FundsDashboard;
+export default Funds;

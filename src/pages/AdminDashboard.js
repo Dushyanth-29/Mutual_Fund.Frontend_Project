@@ -1,35 +1,28 @@
-import React from "react";
-import { Card, CardContent, Typography, Grid } from "@mui/material";
-import { People, BarChart, Security } from "@mui/icons-material";
+import React, { useState } from "react";
+import Sidebar from "../components/Sidebar";
+import Topbar from "../components/Topbar";
+import FundTable from "../components/FundTable";
 
-function AdminDashboard() {
-  const cards = [
-    { title: "Total Users", value: "1,245", icon: <People /> },
-    { title: "Funds Managed", value: "48", icon: <BarChart /> },
-    { title: "Security Level", value: "High", icon: <Security /> },
-  ];
+export default function AdminDashboard() {
+  const [funds, setFunds] = useState([
+    { id: 1, name: "Axis Bluechip Equity", type: "Equity", risk: "Moderate" },
+    { id: 2, name: "HDFC Short Term Debt", type: "Debt", risk: "Low" },
+  ]);
+
+  const deleteFund = (id) => {
+    setFunds(funds.filter((item) => item.id !== id));
+  };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <Typography variant="h4" gutterBottom>
-        Admin Dashboard
-      </Typography>
-      <Grid container spacing={3}>
-        {cards.map((item, index) => (
-          <Grid item xs={12} md={4} key={index}>
-            <Card sx={{ borderRadius: 3, boxShadow: 4 }}>
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  {item.icon} {item.title}
-                </Typography>
-                <Typography variant="h5">{item.value}</Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+    <div className="admin-layout">
+      <Sidebar />
+      <div className="main">
+        <Topbar />
+        <div className="card">
+          <h3>Available Funds</h3>
+          <FundTable funds={funds} deleteFund={deleteFund} />
+        </div>
+      </div>
     </div>
   );
 }
-
-export default AdminDashboard;
