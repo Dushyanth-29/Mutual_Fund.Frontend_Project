@@ -1,52 +1,38 @@
-import React, { useContext } from "react";
-import { FundContext } from "../context/FundContext";
-import "./FundsPage.css";
+import React, { useEffect, useState } from "react";
 
-const FundsPage = () => {
-  const { funds } = useContext(FundContext);
+function FundsPage() {
+  const [funds, setFunds] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/funds")
+      .then((res) => res.json())
+      .then((data) => setFunds(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
-    <div className="funds-container">
-      <h2 className="funds-title">Explore Mutual Funds</h2>
-      <p className="funds-subtitle">Handpicked insights for smarter investments</p>
+    <div style={{ padding: "30px" }}>
+      <h1>Explore Mutual Funds</h1>
 
-      <div className="fund-list">
-        {funds.length === 0 ? (
-          <p className="no-funds">No funds available. Add funds from Admin.</p>
-        ) : (
-          funds.map((fund, index) => (
-            <div key={index} className="fund-card">
-              
-              <div className="fund-header">
-                <div className="fund-icon">{fund.name.charAt(0)}</div>
-                <div>
-                  <h3 className="fund-name">{fund.name}</h3>
-                  <p className="fund-category">{fund.category}</p>
-                </div>
-              </div>
-
-              <div className="fund-details">
-                <div>
-                  <p className="label">NAV</p>
-                  <p className="value">₹{fund.nav}</p>
-                </div>
-                <div>
-                  <p className="label">Risk</p>
-                  <p className="value risk">{fund.riskLevel}</p>
-                </div>
-                <div>
-                  <p className="label">Returns (3Y)</p>
-                  <p className="value return">{fund.returns3Y}%</p>
-                </div>
-              </div>
-
-              <button className="invest-btn">Invest Now</button>
-            </div>
-          ))
-        )}
-      </div>
+      {funds.map((fund) => (
+        <div
+          key={fund.id}
+          style={{
+            border: "1px solid #ccc",
+            padding: "15px",
+            margin: "15px",
+            borderRadius: "10px",
+          }}
+        >
+          <h2>{fund.fundName}</h2>
+          <p>NAV: ₹{fund.nav}</p>
+          <p>Category: {fund.category}</p>
+          <p>Risk: {fund.riskLevel}</p>
+          <p>Returns: {fund.returnsPercentage}%</p>
+        </div>
+      ))}
     </div>
   );
-};
+}
 
 export default FundsPage;
