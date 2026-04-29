@@ -4,7 +4,7 @@ function FundsPage() {
   const [funds, setFunds] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/funds")
+    fetch("https://mutual-fund-backend-project.onrender.com/api/funds")
       .then((res) => res.json())
       .then((data) => setFunds(data))
       .catch((err) => console.log(err));
